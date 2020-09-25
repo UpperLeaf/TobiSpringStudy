@@ -1,12 +1,12 @@
-package me.upperleaf.tobi_spring.user;
+package me.upperleaf.tobi_spring.user.dao;
 
-import javax.xml.transform.Result;
+import me.upperleaf.tobi_spring.user.User;
+
 import java.sql.*;
 
-public class UserDao {
+public abstract class UserDao {
     public void add(User user) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/prac", "root", "1234");
+        Connection conn = getConnection();
 
         PreparedStatement ps = conn.prepareStatement("insert into users(id, name, password) values (?,?,?)");
         ps.setString(1, user.getId());
@@ -21,8 +21,7 @@ public class UserDao {
 
 
     public User get(String id) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/prac", "root", "1234");
+        Connection conn = getConnection();
 
         PreparedStatement ps = conn.prepareStatement("select * from users where id = ?");
         ps.setString(1, id);
@@ -39,5 +38,8 @@ public class UserDao {
         conn.close();
         return user;
     }
+
+    public abstract Connection getConnection() throws ClassNotFoundException, SQLException;
+
 
 }

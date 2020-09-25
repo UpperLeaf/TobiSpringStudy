@@ -1,5 +1,9 @@
-me/upperleaf/tobi_spring/user/UserDao.java
- me.upperleaf.tobi_spring.user.UserDao
+me/upperleaf/tobi_spring/user/dao/DUserDao.java
+ me.upperleaf.tobi_spring.user.dao.DUserDao
+me/upperleaf/tobi_spring/user/dao/NUserDao.java
+ me.upperleaf.tobi_spring.user.dao.NUserDao
+me/upperleaf/tobi_spring/user/dao/UserDao.java
+ me.upperleaf.tobi_spring.user.dao.UserDao
 me/upperleaf/tobi_spring/TobiSpringApplication.java
  me.upperleaf.tobi_spring.TobiSpringApplication
 me/upperleaf/tobi_spring/user/User.java

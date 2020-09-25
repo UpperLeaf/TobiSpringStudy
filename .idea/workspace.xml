@@ -100,6 +100,17 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunManager" selected="Spring Boot.TobiSpringApplication">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="tobi_spring [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -142,7 +153,7 @@
       <updated>1600950870550</updated>
       <workItem from="1600950872240" duration="1464000" />
       <workItem from="1600952453465" duration="200000" />
-      <workItem from="1600998979479" duration="26000" />
+      <workItem from="1600998979479" duration="2240000" />
     </task>
     <servers />
   </component>
@@ -162,41 +173,49 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="2517" height="282" key="GridCell.Tab.0.bottom" timestamp="1600952345164">
+    <state x="1085" y="225" key="#com.intellij.ide.util.MemberChooser" timestamp="1601000119705">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.bottom/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1600952345164" />
-    <state width="2517" height="282" key="GridCell.Tab.0.center" timestamp="1600952345164">
+    <state x="1085" y="225" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601000119705" />
+    <state width="2517" height="282" key="GridCell.Tab.0.bottom" timestamp="1601001110870">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.center/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1600952345164" />
-    <state width="2517" height="282" key="GridCell.Tab.0.left" timestamp="1600952345164">
+    <state width="2517" height="282" key="GridCell.Tab.0.bottom/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601001110870" />
+    <state width="2517" height="282" key="GridCell.Tab.0.center" timestamp="1601001110870">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.left/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1600952345164" />
-    <state width="2517" height="282" key="GridCell.Tab.0.right" timestamp="1600952345164">
+    <state width="2517" height="282" key="GridCell.Tab.0.center/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601001110870" />
+    <state width="2517" height="282" key="GridCell.Tab.0.left" timestamp="1601001110869">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.right/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1600952345164" />
-    <state width="2517" height="282" key="GridCell.Tab.1.bottom" timestamp="1600952345165">
+    <state width="2517" height="282" key="GridCell.Tab.0.left/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601001110869" />
+    <state width="2517" height="282" key="GridCell.Tab.0.right" timestamp="1601001110870">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.1.bottom/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1600952345165" />
-    <state width="2517" height="282" key="GridCell.Tab.1.center" timestamp="1600952345165">
+    <state width="2517" height="282" key="GridCell.Tab.0.right/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601001110870" />
+    <state width="2517" height="282" key="GridCell.Tab.1.bottom" timestamp="1601001110870">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.1.center/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1600952345165" />
-    <state width="2517" height="282" key="GridCell.Tab.1.left" timestamp="1600952345164">
+    <state width="2517" height="282" key="GridCell.Tab.1.bottom/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601001110870" />
+    <state width="2517" height="282" key="GridCell.Tab.1.center" timestamp="1601001110870">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.1.left/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1600952345164" />
-    <state width="2517" height="282" key="GridCell.Tab.1.right" timestamp="1600952345165">
+    <state width="2517" height="282" key="GridCell.Tab.1.center/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601001110870" />
+    <state width="2517" height="282" key="GridCell.Tab.1.left" timestamp="1601001110870">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.1.right/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1600952345165" />
+    <state width="2517" height="282" key="GridCell.Tab.1.left/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601001110870" />
+    <state width="2517" height="282" key="GridCell.Tab.1.right" timestamp="1601001110870">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="2517" height="282" key="GridCell.Tab.1.right/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601001110870" />
     <state x="781" y="164" key="SettingsEditor" timestamp="1600998995145">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="781" y="164" key="SettingsEditor/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1600998995145" />
+    <state x="1077" y="173" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1600999572400">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1077" y="173" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1600999572400" />
   </component>
 </project>

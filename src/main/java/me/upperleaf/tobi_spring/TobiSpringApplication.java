@@ -1,9 +1,8 @@
 package me.upperleaf.tobi_spring;
 
 import me.upperleaf.tobi_spring.user.User;
-import me.upperleaf.tobi_spring.user.UserDao;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.WebApplicationType;
+import me.upperleaf.tobi_spring.user.dao.NUserDao;
+import me.upperleaf.tobi_spring.user.dao.UserDao;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.sql.SQLException;
@@ -17,7 +16,7 @@ public class TobiSpringApplication {
 //        app.setWebApplicationType(WebApplicationType.NONE);
 //        app.run(TobiSpringApplication.class, args);
 
-        UserDao userDao = new UserDao();
+        UserDao userDao = new NUserDao();
 
         User user = new User();
         user.setId("upperleaf");
