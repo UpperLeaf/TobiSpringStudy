@@ -6,5 +6,7 @@ me/upperleaf/tobi_spring/user/dao/UserDao.java
  me.upperleaf.tobi_spring.user.dao.UserDao
 me/upperleaf/tobi_spring/TobiSpringApplication.java
  me.upperleaf.tobi_spring.TobiSpringApplication
+me/upperleaf/tobi_spring/user/dao/SimpleConnectionMaker.java
+ me.upperleaf.tobi_spring.user.dao.SimpleConnectionMaker
 me/upperleaf/tobi_spring/user/User.java
  me.upperleaf.tobi_spring.user.User
