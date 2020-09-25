@@ -1,7 +1,7 @@
+me/upperleaf/tobi_spring/user/dao/DaoFactory.java
+ me.upperleaf.tobi_spring.user.dao.DaoFactory
 me/upperleaf/tobi_spring/user/dao/CountingConnectionMaker.java
  me.upperleaf.tobi_spring.user.dao.CountingConnectionMaker
-me/upperleaf/tobi_spring/user/dao/CountingDaoFactory.java
- me.upperleaf.tobi_spring.user.dao.CountingDaoFactory
 me/upperleaf/tobi_spring/user/dao/DConnectionMaker.java
  me.upperleaf.tobi_spring.user.dao.DConnectionMaker
 me/upperleaf/tobi_spring/user/dao/NConnectionMaker.java
