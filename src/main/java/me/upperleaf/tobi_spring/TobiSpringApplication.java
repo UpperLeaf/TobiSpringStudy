@@ -1,6 +1,7 @@
 package me.upperleaf.tobi_spring;
 
 import me.upperleaf.tobi_spring.user.User;
+import me.upperleaf.tobi_spring.user.dao.DaoFactory;
 import me.upperleaf.tobi_spring.user.dao.NConnectionMaker;
 import me.upperleaf.tobi_spring.user.dao.UserDao;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,7 +17,7 @@ public class TobiSpringApplication {
 //        app.setWebApplicationType(WebApplicationType.NONE);
 //        app.run(TobiSpringApplication.class, args);
 
-        UserDao userDao = new UserDao(new NConnectionMaker());
+        UserDao userDao = new DaoFactory().userDao();
 
         User user = new User();
         user.setId("upperleaf");
