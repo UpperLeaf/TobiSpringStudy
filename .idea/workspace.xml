@@ -68,8 +68,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="spring-beans.schema" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -97,17 +98,25 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="me.upperleaf.tobi_spring.user.dao" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\IdeaProjects\tobi_spring\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.TobiSpringApplication">
+  <component name="RunManager" selected="Gradle.UserDaoTest.addAndGet">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -118,6 +127,25 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="UserDaoTest.addAndGet" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;me.upperleaf.tobi_spring.user.dao.UserDaoTest.addAndGet&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
     </configuration>
     <configuration name="tobi_spring [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -147,6 +175,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.UserDaoTest.addAndGet" />
         <item itemvalue="Gradle.tobi_spring [dependencies]" />
       </list>
     </recent_temporary>
@@ -161,7 +190,7 @@
       <updated>1600950870550</updated>
       <workItem from="1600950872240" duration="1464000" />
       <workItem from="1600952453465" duration="200000" />
-      <workItem from="1600998979479" duration="12513000" />
+      <workItem from="1600998979479" duration="15264000" />
     </task>
     <servers />
   </component>
@@ -189,38 +218,38 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1010" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601003503025" />
-    <state width="2517" height="282" key="GridCell.Tab.0.bottom" timestamp="1601016158650">
+    <state width="2517" height="282" key="GridCell.Tab.0.bottom" timestamp="1601019395090">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.bottom/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601016158650" />
-    <state width="2517" height="282" key="GridCell.Tab.0.center" timestamp="1601016158650">
+    <state width="2517" height="282" key="GridCell.Tab.0.bottom/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601019395090" />
+    <state width="2517" height="282" key="GridCell.Tab.0.center" timestamp="1601019395089">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.center/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601016158650" />
-    <state width="2517" height="282" key="GridCell.Tab.0.left" timestamp="1601016158650">
+    <state width="2517" height="282" key="GridCell.Tab.0.center/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601019395089" />
+    <state width="2517" height="282" key="GridCell.Tab.0.left" timestamp="1601019395088">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.left/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601016158650" />
-    <state width="2517" height="282" key="GridCell.Tab.0.right" timestamp="1601016158650">
+    <state width="2517" height="282" key="GridCell.Tab.0.left/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601019395088" />
+    <state width="2517" height="282" key="GridCell.Tab.0.right" timestamp="1601019395089">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.right/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601016158650" />
-    <state width="2517" height="282" key="GridCell.Tab.1.bottom" timestamp="1601016158651">
+    <state width="2517" height="282" key="GridCell.Tab.0.right/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601019395089" />
+    <state width="2517" height="282" key="GridCell.Tab.1.bottom" timestamp="1601019356732">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.1.bottom/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601016158651" />
-    <state width="2517" height="282" key="GridCell.Tab.1.center" timestamp="1601016158650">
+    <state width="2517" height="282" key="GridCell.Tab.1.bottom/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601019356732" />
+    <state width="2517" height="282" key="GridCell.Tab.1.center" timestamp="1601019356732">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.1.center/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601016158650" />
-    <state width="2517" height="282" key="GridCell.Tab.1.left" timestamp="1601016158650">
+    <state width="2517" height="282" key="GridCell.Tab.1.center/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601019356732" />
+    <state width="2517" height="282" key="GridCell.Tab.1.left" timestamp="1601019356732">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.1.left/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601016158650" />
-    <state width="2517" height="282" key="GridCell.Tab.1.right" timestamp="1601016158650">
+    <state width="2517" height="282" key="GridCell.Tab.1.left/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601019356732" />
+    <state width="2517" height="282" key="GridCell.Tab.1.right" timestamp="1601019356732">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.1.right/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601016158650" />
+    <state width="2517" height="282" key="GridCell.Tab.1.right/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601019356732" />
     <state x="781" y="164" key="SettingsEditor" timestamp="1600998995145">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
@@ -229,6 +258,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1077" y="173" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1600999572400" />
+    <state x="1043" y="314" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1601019097077">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1043" y="314" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601019097077" />
     <state x="1010" y="279" key="extract.method.dialog" timestamp="1601007058990">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>

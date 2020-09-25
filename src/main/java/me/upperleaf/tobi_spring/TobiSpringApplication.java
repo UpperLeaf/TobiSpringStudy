@@ -13,23 +13,7 @@ import java.sql.SQLException;
 @SpringBootApplication
 public class TobiSpringApplication {
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        ApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext("applicationContext.xml");
+    public static void main(String[] args){
 
-        UserDao userDao = applicationContext.getBean("userDao", UserDao.class);
-
-        User user = new User();
-        user.setId("upperleaf");
-        user.setName("김상엽");
-        user.setPassword("password");
-
-        userDao.add(user);
-
-        User user2 = userDao.get(user.getId());
-
-        System.out.println(user2.getName());
-        System.out.println(user2.getPassword());
-        System.out.println(user2.getId() + " 조회 성공");
     }
 }
