@@ -1,10 +1,14 @@
 package me.upperleaf.tobi_spring;
 
 import me.upperleaf.tobi_spring.user.User;
-import me.upperleaf.tobi_spring.user.dao.DaoFactory;
-import me.upperleaf.tobi_spring.user.dao.NConnectionMaker;
+import me.upperleaf.tobi_spring.user.dao.CountingConnectionMaker;
+import me.upperleaf.tobi_spring.user.dao.CountingDaoFactory;
 import me.upperleaf.tobi_spring.user.dao.UserDao;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
 
 import java.sql.SQLException;
 
@@ -12,12 +16,10 @@ import java.sql.SQLException;
 public class TobiSpringApplication {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-//        SpringApplication.run(TobiSpringApplication.class, args);
-//        SpringApplication app = new SpringApplication();
-//        app.setWebApplicationType(WebApplicationType.NONE);
-//        app.run(TobiSpringApplication.class, args);
+        ApplicationContext applicationContext =
+                new AnnotationConfigApplicationContext(CountingDaoFactory.class);
 
-        UserDao userDao = new DaoFactory().userDao();
+        UserDao userDao = applicationContext.getBean("userDao", UserDao.class);
 
         User user = new User();
         user.setId("upperleaf");
@@ -27,10 +29,9 @@ public class TobiSpringApplication {
         userDao.add(user);
 
         User user2 = userDao.get(user.getId());
+
         System.out.println(user2.getName());
         System.out.println(user2.getPassword());
-
         System.out.println(user2.getId() + " 조회 성공");
     }
-
 }
