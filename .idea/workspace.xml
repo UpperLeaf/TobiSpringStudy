@@ -23,6 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0554509-ffa8-4d3c-9217-8a8b36eb144b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/test-applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/JUnitTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -31,13 +33,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/upperleaf/tobi_spring/TobiSpringApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/upperleaf/tobi_spring/TobiSpringApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/upperleaf/tobi_spring/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/upperleaf/tobi_spring/user/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/TobiSpringApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/TobiSpringApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/dao/UserDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/user/dao/UserDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/user/dao/UserDaoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,8 +82,8 @@
       <list>
         <option value="Interface" />
         <option value="spring-beans.schema" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -138,9 +134,10 @@
       <command value="UserDaoTest" />
       <command value="git add ." />
       <command value="Terminal" />
+      <command value="JUnitTest" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.UserDaoTest">
+  <component name="RunManager" selected="Gradle.JUnitTest">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -153,6 +150,25 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="JUnitTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;me.upperleaf.tobi_spring.JUnitTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
     </configuration>
     <configuration name="UserDaoTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -239,6 +255,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.JUnitTest" />
         <item itemvalue="Gradle.UserDaoTest" />
         <item itemvalue="Gradle.UserDaoTest.getUserFailure" />
         <item itemvalue="Gradle.UserDaoTest.addAndGet" />
@@ -257,7 +274,7 @@
       <workItem from="1600950872240" duration="1464000" />
       <workItem from="1600952453465" duration="200000" />
       <workItem from="1600998979479" duration="18451000" />
-      <workItem from="1601096554820" duration="2543000" />
+      <workItem from="1601096554820" duration="5920000" />
     </task>
     <servers />
   </component>
@@ -289,22 +306,22 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1275" y="410" key="FileChooserDialogImpl/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601094728899" />
-    <state width="2517" height="282" key="GridCell.Tab.0.bottom" timestamp="1601099098090">
+    <state width="2517" height="282" key="GridCell.Tab.0.bottom" timestamp="1601102431930">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.bottom/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601099098090" />
-    <state width="2517" height="282" key="GridCell.Tab.0.center" timestamp="1601099098090">
+    <state width="2517" height="282" key="GridCell.Tab.0.bottom/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601102431930" />
+    <state width="2517" height="282" key="GridCell.Tab.0.center" timestamp="1601102431930">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.center/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601099098090" />
-    <state width="2517" height="282" key="GridCell.Tab.0.left" timestamp="1601099098090">
+    <state width="2517" height="282" key="GridCell.Tab.0.center/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601102431930" />
+    <state width="2517" height="282" key="GridCell.Tab.0.left" timestamp="1601102431930">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.left/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601099098090" />
-    <state width="2517" height="282" key="GridCell.Tab.0.right" timestamp="1601099098090">
+    <state width="2517" height="282" key="GridCell.Tab.0.left/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601102431930" />
+    <state width="2517" height="282" key="GridCell.Tab.0.right" timestamp="1601102431930">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.right/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601099098090" />
+    <state width="2517" height="282" key="GridCell.Tab.0.right/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601102431930" />
     <state width="2517" height="282" key="GridCell.Tab.1.bottom" timestamp="1601019356732">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
@@ -345,10 +362,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1086" y="315" key="new project wizard/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601094725315" />
-    <state x="936" y="240" width="672" height="677" key="run.anything.popup" timestamp="1601099102195">
+    <state x="936" y="240" width="672" height="677" key="run.anything.popup" timestamp="1601102070041">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="936" y="240" width="672" height="677" key="run.anything.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601099102195" />
+    <state x="936" y="240" width="672" height="677" key="run.anything.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601102070041" />
     <state x="943" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601099098084">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>

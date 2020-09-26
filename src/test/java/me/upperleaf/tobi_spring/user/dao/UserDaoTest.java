@@ -3,27 +3,38 @@ package me.upperleaf.tobi_spring.user.dao;
 import me.upperleaf.tobi_spring.user.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.datasource.SingleConnectionDataSource;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ContextConfiguration;
 
+import javax.sql.DataSource;
 import java.sql.SQLException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@SpringBootTest
+@ContextConfiguration(locations = "/test-applicationContext.xml")
 public class UserDaoTest {
 
+    @Autowired
+    private ApplicationContext applicationContext;
+
+    @Autowired
     private UserDao userDao;
+
     private User user1;
     private User user2;
     private User user3;
+
     @BeforeEach
     public void setUp() {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        this.userDao = applicationContext.getBean("userDao", UserDao.class);
-
         user1 = new User("upperleaf", "김상엽", "password");
         user2 = new User("gyumee", "박성철", "springno1");
         user3 = new User("leegw700", "이길원", "springno2");
