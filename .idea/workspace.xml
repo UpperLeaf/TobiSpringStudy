@@ -23,9 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0554509-ffa8-4d3c-9217-8a8b36eb144b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/dao/DeleteAllStatement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/dao/StatementStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/dao/DeleteAllStatement.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/dao/UserDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -266,7 +265,7 @@
       <workItem from="1600950872240" duration="1464000" />
       <workItem from="1600952453465" duration="200000" />
       <workItem from="1600998979479" duration="18451000" />
-      <workItem from="1601096554820" duration="8258000" />
+      <workItem from="1601096554820" duration="8862000" />
     </task>
     <servers />
   </component>
@@ -286,10 +285,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1085" y="225" key="#com.intellij.ide.util.MemberChooser" timestamp="1601105012270">
+    <state x="1085" y="225" key="#com.intellij.ide.util.MemberChooser" timestamp="1601105393162">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1085" y="225" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601105012270" />
+    <state x="1085" y="225" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601105393162" />
     <state x="1010" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1601003503025">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
