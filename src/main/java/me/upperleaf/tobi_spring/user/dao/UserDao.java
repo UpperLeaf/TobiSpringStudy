@@ -2,20 +2,22 @@ package me.upperleaf.tobi_spring.user.dao;
 
 import me.upperleaf.tobi_spring.user.User;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.core.ResultSetExtractor;
 
 import javax.sql.DataSource;
 import java.sql.*;
 
 public class UserDao {
+
+    private JdbcContext jdbcContext;
     private DataSource dataSource;
 
-    public void setDataSource(DataSource dataSource) {
+    public void setDataSource(DataSource dataSource){
         this.dataSource = dataSource;
+        this.jdbcContext = new JdbcContext(dataSource);
     }
 
     public void add(final User user) throws SQLException {
-        jdbcContextWithStatementStrategy(c -> {
+        this.jdbcContext.workWithStatementStrategy(c -> {
             PreparedStatement ps = c.prepareStatement("insert into users(id, name, password) VALUES (?,?,?)");
             ps.setString(1, user.getId());
             ps.setString(2, user.getName());
@@ -105,30 +107,10 @@ public class UserDao {
     }
 
     public void deleteAll() throws SQLException {
-        jdbcContextWithStatementStrategy(c -> {
+        this.jdbcContext.workWithStatementStrategy(c -> {
             PreparedStatement ps = c.prepareStatement("delete from users");
             return ps;
         });
-    }
-
-    public void jdbcContextWithStatementStrategy(StatementStrategy stmt) throws SQLException{
-        Connection conn = null;
-        PreparedStatement ps = null;
-
-        try{
-            conn = dataSource.getConnection();
-            ps = stmt.makePreparedStatement(conn);
-            ps.executeUpdate();
-        }catch (SQLException e){
-            throw e;
-        }finally {
-            if (ps != null){
-                try {ps.close();}catch (SQLException ignored) {}
-            }
-            if (conn != null){
-                try {conn.close();}catch (SQLException ignored) {}
-            }
-        }
     }
 
 }

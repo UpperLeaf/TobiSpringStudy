@@ -20,7 +20,7 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
-@ContextConfiguration(locations = "/test-applicationContext.xml")
+@ContextConfiguration(locations = "/applicationContext.xml")
 public class UserDaoTest {
 
     @Autowired
