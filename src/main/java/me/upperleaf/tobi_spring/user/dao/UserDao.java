@@ -2,6 +2,7 @@ package me.upperleaf.tobi_spring.user.dao;
 
 import me.upperleaf.tobi_spring.user.User;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.ResultSetExtractor;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -27,52 +28,110 @@ public class UserDao {
         conn.close();
     }
 
-
     public User get(String id) throws SQLException {
-        Connection conn = dataSource.getConnection();
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
 
-        PreparedStatement ps = conn.prepareStatement("select * from users where id = ?");
-        ps.setString(1, id);
+        try {
+            conn = dataSource.getConnection();
 
-        ResultSet rs = ps.executeQuery();
+            ps = conn.prepareStatement("select * from users where id = ?");
+            ps.setString(1, id);
 
-        User user = null;
-        if(rs.next()){
-            user = new User();
-            user.setId(rs.getString("id"));
-            user.setName(rs.getString("name"));
-            user.setPassword(rs.getString("password"));
+            rs = ps.executeQuery();
+
+            User user = null;
+            if (rs.next()) {
+                user = new User();
+                user.setId(rs.getString("id"));
+                user.setName(rs.getString("name"));
+                user.setPassword(rs.getString("password"));
+            }
+            if (user == null)
+                throw new EmptyResultDataAccessException(1);
+            return user;
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ignored) {
+                }
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ignored) {
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ignored) {
+                }
+            }
         }
 
-        rs.close();
-        ps.close();
-        conn.close();
-        if(user == null)
-            throw new EmptyResultDataAccessException(1);
-        return user;
     }
 
-    public int getCount() throws SQLException{
-        Connection conn = dataSource.getConnection();
+    public int getCount() throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
 
-        PreparedStatement ps = conn.prepareStatement("select count(*) from users");
-        ResultSet rs = ps.executeQuery();
-        rs.next();
-
-        int count = rs.getInt(1);
-
-        rs.close();
-        ps.close();
-        conn.close();
-
-        return count;
+        try {
+            conn = dataSource.getConnection();
+            ps = conn.prepareStatement("select count(*) from users");
+            rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            if(rs != null) {
+                try {
+                    rs.close();
+                }catch (SQLException ignored) {}
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                }catch (SQLException ignored) {}
+            }
+            if (conn != null){
+                try{
+                    conn.close();
+                }catch (SQLException ignored) {}
+            }
+        }
     }
 
     public void deleteAll() throws SQLException {
-        Connection conn = dataSource.getConnection();
+        Connection conn = null;
+        PreparedStatement ps = null;
 
-        PreparedStatement ps = conn.prepareStatement("delete from users");
-        ps.executeUpdate();
+        try {
+            conn = dataSource.getConnection();
+            ps = conn.prepareStatement("delete from users");
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ignored) {
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ignored) {
+                }
+            }
+        }
 
         ps.close();
         conn.close();
