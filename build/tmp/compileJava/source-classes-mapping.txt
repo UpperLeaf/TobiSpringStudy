@@ -1,5 +1,10 @@
-me/upperleaf/tobi_spring/user/dao/DaoFactory.java
- me.upperleaf.tobi_spring.user.dao.DaoFactory
+me/upperleaf/tobi_spring/user/service/UserService.java
+ me.upperleaf.tobi_spring.user.service.UserService
+me/upperleaf/tobi_spring/user/domain/User.java
+ me.upperleaf.tobi_spring.user.domain.User
+me/upperleaf/tobi_spring/user/service/DefaultUserLevelUpgradePolicy.java
+ me.upperleaf.tobi_spring.user.service.DefaultUserLevelUpgradePolicy
+ me.upperleaf.tobi_spring.user.service.DefaultUserLevelUpgradePolicy$1
 me/upperleaf/tobi_spring/user/dao/UserDaoJdbc.java
  me.upperleaf.tobi_spring.user.dao.UserDaoJdbc
 me/upperleaf/tobi_spring/user/dao/CountingConnectionMaker.java
@@ -12,9 +17,13 @@ me/upperleaf/tobi_spring/user/dao/NConnectionMaker.java
  me.upperleaf.tobi_spring.user.dao.NConnectionMaker
 me/upperleaf/tobi_spring/user/dao/ConnectionMaker.java
  me.upperleaf.tobi_spring.user.dao.ConnectionMaker
+me/upperleaf/tobi_spring/user/dao/DaoFactory.java
+ me.upperleaf.tobi_spring.user.dao.DaoFactory
+me/upperleaf/tobi_spring/user/service/UserLevelUpgradePolicy.java
+ me.upperleaf.tobi_spring.user.service.UserLevelUpgradePolicy
+me/upperleaf/tobi_spring/user/domain/Level.java
+ me.upperleaf.tobi_spring.user.domain.Level
 me/upperleaf/tobi_spring/user/dao/UserDao.java
  me.upperleaf.tobi_spring.user.dao.UserDao
 me/upperleaf/tobi_spring/TobiSpringApplication.java
  me.upperleaf.tobi_spring.TobiSpringApplication
-me/upperleaf/tobi_spring/user/User.java
- me.upperleaf.tobi_spring.user.User

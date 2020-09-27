@@ -16,4 +16,13 @@
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource"></property>
     </bean>
+
+    <bean id="userLevelUpgradePolicy" class="me.upperleaf.tobi_spring.user.service.DefaultUserLevelUpgradePolicy">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+
+    <bean id="userService" class="me.upperleaf.tobi_spring.user.service.UserService">
+        <property name="userLevelUpgradePolicy" ref="userLevelUpgradePolicy"></property>
+        <property name="userDao" ref="userDao"></property>
+    </bean>
 </beans>

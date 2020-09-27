@@ -1,6 +1,7 @@
 package me.upperleaf.tobi_spring.user.dao;
 
-import me.upperleaf.tobi_spring.user.User;
+import me.upperleaf.tobi_spring.user.domain.Level;
+import me.upperleaf.tobi_spring.user.domain.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +37,30 @@ public class UserDaoTest {
 
     @BeforeEach
     public void setUp() {
-        user1 = new User("abc", "김상엽", "password");
-        user2 = new User("bca", "박성철", "springno1");
-        user3 = new User("cba", "이길원", "springno2");
+        user1 = new User("abc", "김상엽", "password", Level.BASIC, 1, 0);
+        user2 = new User("bca", "박성철", "springno1", Level.SILVER, 55, 10);
+        user3 = new User("cba", "이길원", "springno2", Level.GOLD, 100, 40);
+    }
+
+    @Test
+    public void update(){
+        userDao.deleteAll();
+
+        userDao.add(user1);
+        userDao.add(user2);
+
+        user1.setName("오민규");
+        user1.setPassword("springno6");
+        user1.setLevel(Level.GOLD);
+        user1.setLogin(1000);
+        user1.setRecommend(999);
+        userDao.update(user1);
+
+        User user1update = userDao.get(user1.getId());
+        checkSameUser(user1, user1update);
+
+        User user2same = userDao.get(user2.getId());
+        checkSameUser(user2, user2same);
     }
 
     @Test
@@ -64,12 +86,10 @@ public class UserDaoTest {
         assertThat(userDao.getCount(), is(2));
 
         User userget1 = userDao.get(user1.getId());
-        assertThat(userget1.getName(), is(user1.getName()));
-        assertThat(userget1.getPassword(), is(user1.getPassword()));
+        checkSameUser(user1, userget1);
 
         User userget2 = userDao.get(user2.getId());
-        assertThat(userget2.getName(), is(user2.getName()));
-        assertThat(userget2.getPassword(), is(user2.getPassword()));
+        checkSameUser(user2, userget2);
     }
 
     @Test
@@ -136,5 +156,8 @@ public class UserDaoTest {
         assertThat(user1.getId(), is(user2.getId()));
         assertThat(user1.getName(), is(user2.getName()));
         assertThat(user1.getPassword(), is(user2.getPassword()));
+        assertThat(user1.getLevel(), is(user2.getLevel()));
+        assertThat(user1.getLogin(), is(user2.getLogin()));
+        assertThat(user1.getRecommend(), is(user2.getRecommend()));
     }
 }
