@@ -35,4 +35,8 @@ public class JdbcContext {
             if (conn != null) { try { conn.close(); }catch (SQLException ignored) {} }
         }
     }
+
+    public void executeSql(String sql) throws SQLException {
+        workWithStatementStrategy(c -> c.prepareStatement(sql));
+    }
 }

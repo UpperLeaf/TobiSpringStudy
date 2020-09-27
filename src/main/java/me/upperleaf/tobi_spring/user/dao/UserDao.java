@@ -7,11 +7,10 @@ import javax.sql.DataSource;
 import java.sql.*;
 
 public class UserDao {
-
     private JdbcContext jdbcContext;
     private DataSource dataSource;
 
-    public void setDataSource(DataSource dataSource){
+    public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
         this.jdbcContext = new JdbcContext(dataSource);
     }
@@ -107,10 +106,8 @@ public class UserDao {
     }
 
     public void deleteAll() throws SQLException {
-        this.jdbcContext.workWithStatementStrategy(c -> {
-            PreparedStatement ps = c.prepareStatement("delete from users");
-            return ps;
-        });
+        jdbcContext.executeSql("delete from users");
     }
+
 
 }
