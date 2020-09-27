@@ -1,5 +1,6 @@
 package me.upperleaf.tobi_spring.user.dao;
 
+import com.mysql.cj.AppendingBatchVisitor;
 import me.upperleaf.tobi_spring.user.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -35,13 +37,13 @@ public class UserDaoTest {
 
     @BeforeEach
     public void setUp() {
-        user1 = new User("upperleaf", "김상엽", "password");
-        user2 = new User("gyumee", "박성철", "springno1");
-        user3 = new User("leegw700", "이길원", "springno2");
+        user1 = new User("abc", "김상엽", "password");
+        user2 = new User("bca", "박성철", "springno1");
+        user3 = new User("cba", "이길원", "springno2");
     }
 
     @Test
-    public void addAndGet() throws SQLException {
+    public void addAndGet() {
         userDao.deleteAll();
         assertThat(userDao.getCount(), is(0));
 
@@ -59,7 +61,7 @@ public class UserDaoTest {
     }
 
     @Test
-    public void count() throws SQLException {
+    public void count() {
         userDao.deleteAll();
         assertThat(userDao.getCount(), is(0));
 
@@ -74,7 +76,7 @@ public class UserDaoTest {
     }
 
     @Test
-    public void getUserFailure() throws SQLException{
+    public void getUserFailure() {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 
         UserDao userDao = applicationContext.getBean("userDao", UserDao.class);
@@ -83,5 +85,37 @@ public class UserDaoTest {
         assertThat(userDao.getCount(), is(0));
 
         assertThrows(EmptyResultDataAccessException.class, () -> userDao.get("unknown_id"));
+    }
+
+    @Test
+    public void getAll() {
+        userDao.deleteAll();;
+
+        List<User> users0 = userDao.getAll();
+        assertThat(users0.size(), is(0));
+
+        userDao.add(user1);
+        List<User> users1 = userDao.getAll();
+        assertThat(users1.size(), is(1));
+        checkSameUser(user1, users1.get(0));
+
+        userDao.add(user2);
+        List<User> users2 = userDao.getAll();
+        assertThat(users2.size(), is(2));
+        checkSameUser(user1, users2.get(0));
+        checkSameUser(user2, users2.get(1));
+
+        userDao.add(user3);
+        List<User> users3 = userDao.getAll();
+        assertThat(users3.size(), is(3));
+        checkSameUser(user1, users3.get(0));
+        checkSameUser(user2, users3.get(1));
+        checkSameUser(user3, users3.get(2));
+    }
+
+    private void checkSameUser(User user1, User user2){
+        assertThat(user1.getId(), is(user2.getId()));
+        assertThat(user1.getName(), is(user2.getName()));
+        assertThat(user1.getPassword(), is(user2.getPassword()));
     }
 }
