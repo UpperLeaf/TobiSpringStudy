@@ -1,13 +1,13 @@
 me/upperleaf/tobi_spring/user/dao/DaoFactory.java
  me.upperleaf.tobi_spring.user.dao.DaoFactory
-me/upperleaf/tobi_spring/user/dao/JdbcContext.java
- me.upperleaf.tobi_spring.user.dao.JdbcContext
-me/upperleaf/tobi_spring/user/dao/StatementStrategy.java
- me.upperleaf.tobi_spring.user.dao.StatementStrategy
+me/upperleaf/tobi_spring/user/dao/UserDaoJdbc.java
+ me.upperleaf.tobi_spring.user.dao.UserDaoJdbc
 me/upperleaf/tobi_spring/user/dao/CountingConnectionMaker.java
  me.upperleaf.tobi_spring.user.dao.CountingConnectionMaker
 me/upperleaf/tobi_spring/user/dao/DConnectionMaker.java
  me.upperleaf.tobi_spring.user.dao.DConnectionMaker
+me/upperleaf/tobi_spring/user/dao/DuplicateUserIdException.java
+ me.upperleaf.tobi_spring.user.dao.DuplicateUserIdException
 me/upperleaf/tobi_spring/user/dao/NConnectionMaker.java
  me.upperleaf.tobi_spring.user.dao.NConnectionMaker
 me/upperleaf/tobi_spring/user/dao/ConnectionMaker.java

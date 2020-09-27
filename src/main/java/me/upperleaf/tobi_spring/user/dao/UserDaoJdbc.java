@@ -1,16 +1,19 @@
 package me.upperleaf.tobi_spring.user.dao;
 
 import me.upperleaf.tobi_spring.user.User;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-import javax.sql.DataSource;
-import java.sql.SQLException;
 import java.util.List;
 
-public class UserDaoJdbc {
+public class UserDaoJdbc implements UserDao{
+
     private JdbcTemplate jdbcTemplate;
+
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate){
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
     private final RowMapper<User> userRowMapper = (rs, rowNum) -> {
         User user = new User();
         user.setId(rs.getString("id"));
@@ -19,11 +22,7 @@ public class UserDaoJdbc {
         return user;
     };
 
-    public void setDataSource(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-    }
-
-    public void add(final User user) throws DuplicateUserIdException {
+    public void add(final User user)  {
         jdbcTemplate.update("insert into users(id, name, password) VALUES (?, ?, ?)", user.getId(), user.getName(), user.getPassword());
     }
 

@@ -1,16 +1,15 @@
 package me.upperleaf.tobi_spring.user.dao;
 
-import com.mysql.cj.AppendingBatchVisitor;
 import me.upperleaf.tobi_spring.user.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.datasource.SingleConnectionDataSource;
-import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator;
+import org.springframework.jdbc.support.SQLExceptionTranslator;
 import org.springframework.test.context.ContextConfiguration;
 
 import javax.sql.DataSource;
@@ -26,10 +25,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class UserDaoTest {
 
     @Autowired
-    private ApplicationContext applicationContext;
+    private UserDao userDao;
 
     @Autowired
-    private UserDao userDao;
+    private DataSource dataSource;
 
     private User user1;
     private User user2;
@@ -40,6 +39,19 @@ public class UserDaoTest {
         user1 = new User("abc", "김상엽", "password");
         user2 = new User("bca", "박성철", "springno1");
         user3 = new User("cba", "이길원", "springno2");
+    }
+
+    @Test
+    public void sqlExceptionTranslate() {
+        userDao.deleteAll();
+        try{
+            userDao.add(user1);
+            userDao.add(user1);
+        }catch (DuplicateKeyException ex){
+            SQLException sqlEx = (SQLException) ex.getRootCause();
+            SQLExceptionTranslator set = new SQLErrorCodeSQLExceptionTranslator(this.dataSource);
+            assertThat(set.translate(null, null, sqlEx).getClass(), is(DuplicateKeyException.class));
+        }
     }
 
     @Test
@@ -77,10 +89,6 @@ public class UserDaoTest {
 
     @Test
     public void getUserFailure() {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-
-        UserDao userDao = applicationContext.getBean("userDao", UserDao.class);
-
         userDao.deleteAll();
         assertThat(userDao.getCount(), is(0));
 
@@ -111,6 +119,17 @@ public class UserDaoTest {
         checkSameUser(user1, users3.get(0));
         checkSameUser(user2, users3.get(1));
         checkSameUser(user3, users3.get(2));
+    }
+
+    @Test
+    public void duplicateKey() {
+        userDao.deleteAll();
+
+        userDao.add(user1);
+
+        assertThrows(DataAccessException.class, () -> {
+            userDao.add(user1);
+        });
     }
 
     private void checkSameUser(User user1, User user2){
