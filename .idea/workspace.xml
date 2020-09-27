@@ -23,12 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0554509-ffa8-4d3c-9217-8a8b36eb144b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/domain/Level.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/service/DefaultUserLevelUpgradePolicy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/service/UserLevelUpgradePolicy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/user/domain/UserTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/user/service/UserServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/service/TestUserLevelUpgradePolicy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/service/TestUserServiceException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -38,13 +34,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/upperleaf/tobi_spring/user/User.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/dao/UserDaoJdbc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/dao/UserDaoJdbc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/user/dao/UserDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/user/dao/UserDaoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/user/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/user/service/UserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -313,10 +306,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="662" y="361" key="#SQL_Dialects/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601178514577" />
-    <state x="1085" y="225" key="#com.intellij.ide.util.MemberChooser" timestamp="1601191708576">
+    <state x="1085" y="225" key="#com.intellij.ide.util.MemberChooser" timestamp="1601193760349">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1085" y="225" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601191708576" />
+    <state x="1085" y="225" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601193760349" />
     <state x="1010" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1601003503025">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
@@ -325,38 +318,38 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1275" y="410" key="FileChooserDialogImpl/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601094728899" />
-    <state width="2517" height="282" key="GridCell.Tab.0.bottom" timestamp="1601192003751">
+    <state width="2517" height="282" key="GridCell.Tab.0.bottom" timestamp="1601197116050">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.bottom/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601192003751" />
-    <state width="2517" height="282" key="GridCell.Tab.0.center" timestamp="1601192003750">
+    <state width="2517" height="282" key="GridCell.Tab.0.bottom/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601197116050" />
+    <state width="2517" height="282" key="GridCell.Tab.0.center" timestamp="1601197116049">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.center/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601192003750" />
-    <state width="2517" height="282" key="GridCell.Tab.0.left" timestamp="1601192003750">
+    <state width="2517" height="282" key="GridCell.Tab.0.center/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601197116049" />
+    <state width="2517" height="282" key="GridCell.Tab.0.left" timestamp="1601197116049">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.left/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601192003750" />
-    <state width="2517" height="282" key="GridCell.Tab.0.right" timestamp="1601192003750">
+    <state width="2517" height="282" key="GridCell.Tab.0.left/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601197116049" />
+    <state width="2517" height="282" key="GridCell.Tab.0.right" timestamp="1601197116050">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.right/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601192003750" />
-    <state width="2517" height="348" key="GridCell.Tab.1.bottom" timestamp="1601179512026">
+    <state width="2517" height="282" key="GridCell.Tab.0.right/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601197116050" />
+    <state width="2517" height="348" key="GridCell.Tab.1.bottom" timestamp="1601194343671">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="348" key="GridCell.Tab.1.bottom/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601179512026" />
-    <state width="2517" height="348" key="GridCell.Tab.1.center" timestamp="1601179512026">
+    <state width="2517" height="348" key="GridCell.Tab.1.bottom/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601194343671" />
+    <state width="2517" height="348" key="GridCell.Tab.1.center" timestamp="1601194343670">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="348" key="GridCell.Tab.1.center/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601179512026" />
-    <state width="2517" height="348" key="GridCell.Tab.1.left" timestamp="1601179512026">
+    <state width="2517" height="348" key="GridCell.Tab.1.center/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601194343670" />
+    <state width="2517" height="348" key="GridCell.Tab.1.left" timestamp="1601194343670">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="348" key="GridCell.Tab.1.left/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601179512026" />
-    <state width="2517" height="348" key="GridCell.Tab.1.right" timestamp="1601179512026">
+    <state width="2517" height="348" key="GridCell.Tab.1.left/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601194343670" />
+    <state width="2517" height="348" key="GridCell.Tab.1.right" timestamp="1601194343671">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="348" key="GridCell.Tab.1.right/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601179512026" />
+    <state width="2517" height="348" key="GridCell.Tab.1.right/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601194343671" />
     <state x="781" y="164" key="SettingsEditor" timestamp="1601176628388">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>

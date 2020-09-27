@@ -8,12 +8,15 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.transaction.PlatformTransactionManager;
 
+import javax.sql.DataSource;
 import java.util.Arrays;
 import java.util.List;
 
 import static me.upperleaf.tobi_spring.user.service.DefaultUserLevelUpgradePolicy.MIN_LOG_COUNT_FOR_SILVER;
 import static me.upperleaf.tobi_spring.user.service.DefaultUserLevelUpgradePolicy.MIN_RECOMMEND_FOR_GOLD;
+import static org.assertj.core.api.Assertions.fail;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -22,6 +25,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 @SpringBootTest
 @ContextConfiguration(locations = "/applicationContext.xml")
 class UserServiceTest {
+
+    @Autowired
+    PlatformTransactionManager transactionManager;
 
     @Autowired
     UserService userService;
@@ -48,7 +54,29 @@ class UserServiceTest {
     }
 
     @Test
-    public void upgradeLevels(){
+    public void upgradeAllOrNothing() {
+        UserService userService = new UserService();
+
+        TestUserLevelUpgradePolicy testUserLevelUpgradePolicy = new TestUserLevelUpgradePolicy(users.get(3).getId());
+        testUserLevelUpgradePolicy.setUserDao(userDao);
+
+        userService.setUserLevelUpgradePolicy(testUserLevelUpgradePolicy);
+        userService.setUserDao(userDao);
+        userService.setTransactionManager(transactionManager);
+
+        userDao.deleteAll();
+        users.forEach(userService::add);
+        try {
+            userService.upgradeLevels();
+            fail("TestUserServiceException Expected");
+        }catch (TestUserServiceException ex){
+
+        }
+        checkLevelUpgraded(users.get(1), false);
+    }
+
+    @Test
+    public void upgradeLevels() {
         userDao.deleteAll();
 
         users.forEach(user -> userDao.add(user));

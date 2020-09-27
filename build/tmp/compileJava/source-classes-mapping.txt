@@ -9,6 +9,8 @@ me/upperleaf/tobi_spring/user/dao/UserDaoJdbc.java
  me.upperleaf.tobi_spring.user.dao.UserDaoJdbc
 me/upperleaf/tobi_spring/user/dao/CountingConnectionMaker.java
  me.upperleaf.tobi_spring.user.dao.CountingConnectionMaker
+me/upperleaf/tobi_spring/user/service/TestUserServiceException.java
+ me.upperleaf.tobi_spring.user.service.TestUserServiceException
 me/upperleaf/tobi_spring/user/dao/DConnectionMaker.java
  me.upperleaf.tobi_spring.user.dao.DConnectionMaker
 me/upperleaf/tobi_spring/user/dao/DuplicateUserIdException.java
@@ -23,6 +25,9 @@ me/upperleaf/tobi_spring/user/service/UserLevelUpgradePolicy.java
  me.upperleaf.tobi_spring.user.service.UserLevelUpgradePolicy
 me/upperleaf/tobi_spring/user/domain/Level.java
  me.upperleaf.tobi_spring.user.domain.Level
+me/upperleaf/tobi_spring/user/service/TestUserLevelUpgradePolicy.java
+ me.upperleaf.tobi_spring.user.service.TestUserLevelUpgradePolicy
+ me.upperleaf.tobi_spring.user.service.TestUserLevelUpgradePolicy$1
 me/upperleaf/tobi_spring/user/dao/UserDao.java
  me.upperleaf.tobi_spring.user.dao.UserDao
 me/upperleaf/tobi_spring/TobiSpringApplication.java
