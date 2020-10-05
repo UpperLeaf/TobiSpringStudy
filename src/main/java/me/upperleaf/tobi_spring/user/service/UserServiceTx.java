@@ -17,8 +17,6 @@ public class UserServiceTx implements UserService{
         this.transactionManager = transactionManager;
     }
 
-
-
     @Override
     public void upgradeLevels() {
         TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());

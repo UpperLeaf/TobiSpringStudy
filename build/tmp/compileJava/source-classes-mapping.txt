@@ -4,6 +4,8 @@ me/upperleaf/tobi_spring/user/service/UserService.java
  me.upperleaf.tobi_spring.user.service.UserService
 me/upperleaf/tobi_spring/user/domain/User.java
  me.upperleaf.tobi_spring.user.domain.User
+me/upperleaf/tobi_spring/user/dao/MockUserDao.java
+ me.upperleaf.tobi_spring.user.dao.MockUserDao
 me/upperleaf/tobi_spring/user/service/DefaultUserLevelUpgradePolicy.java
  me.upperleaf.tobi_spring.user.service.DefaultUserLevelUpgradePolicy
  me.upperleaf.tobi_spring.user.service.DefaultUserLevelUpgradePolicy$1

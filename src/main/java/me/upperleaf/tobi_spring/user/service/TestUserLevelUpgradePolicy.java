@@ -15,8 +15,9 @@ public class TestUserLevelUpgradePolicy implements UserLevelUpgradePolicy{
     private MailSender mailSender;
     private String id;
 
-    TestUserLevelUpgradePolicy(String id){
+    TestUserLevelUpgradePolicy(String id, UserDao userDao){
         this.id = id;
+        this.userDao = userDao;
     }
 
     public void setUserDao(UserDao userDao) {

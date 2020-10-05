@@ -1,13 +1,16 @@
 package me.upperleaf.tobi_spring.user.service;
 
+import me.upperleaf.tobi_spring.user.dao.MockUserDao;
 import me.upperleaf.tobi_spring.user.dao.UserDao;
 import me.upperleaf.tobi_spring.user.domain.Level;
 import me.upperleaf.tobi_spring.user.domain.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -17,10 +20,13 @@ import java.util.List;
 
 import static me.upperleaf.tobi_spring.user.service.DefaultUserLevelUpgradePolicy.MIN_LOG_COUNT_FOR_SILVER;
 import static me.upperleaf.tobi_spring.user.service.DefaultUserLevelUpgradePolicy.MIN_RECOMMEND_FOR_GOLD;
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.fail;
+import static org.assertj.core.api.InstanceOfAssertFactories.atomicIntegerFieldUpdater;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.*;
 
 
 @SpringBootTest
@@ -62,8 +68,7 @@ class UserServiceImplTest {
     public void upgradeAllOrNothing() {
         UserServiceImpl userService = new UserServiceImpl();
 
-        TestUserLevelUpgradePolicy testUserLevelUpgradePolicy = new TestUserLevelUpgradePolicy(users.get(3).getId());
-        testUserLevelUpgradePolicy.setUserDao(userDao);
+        TestUserLevelUpgradePolicy testUserLevelUpgradePolicy = new TestUserLevelUpgradePolicy(users.get(3).getId(), userDao);
         testUserLevelUpgradePolicy.setMailSender(mailSender);
 
         userService.setUserLevelUpgradePolicy(testUserLevelUpgradePolicy);
@@ -86,37 +91,34 @@ class UserServiceImplTest {
 
     @Test
     public void upgradeLevels() {
-        UserServiceTx userServiceTx = new UserServiceTx();
-        userServiceTx.setTransactionManager(transactionManager);
-
         UserServiceImpl userService = new UserServiceImpl();
 
+        MockUserDao userDao = new MockUserDao(this.users);
+
         MockMailSender mailSender = new MockMailSender();
+
         DefaultUserLevelUpgradePolicy policy = new DefaultUserLevelUpgradePolicy();
         policy.setUserDao(userDao);
         policy.setMailSender(mailSender);
-        userService.setUserLevelUpgradePolicy(policy);
+
         userService.setUserDao(userDao);
+        userService.setUserLevelUpgradePolicy(policy);
 
-        userServiceTx.setUserService(userService);
+        userService.upgradeLevels();
 
-        userDao.deleteAll();
+        List<User> updated = userDao.getUpdated();
+        assertThat(updated.size(), is(2));
+        checkUserAndLevel(updated.get(0), "joytouch", Level.SILVER);
+        checkUserAndLevel(updated.get(1), "madnite1", Level.GOLD);
 
-        users.forEach(user -> userDao.add(user));
+
+    }
 
 
-        userServiceTx.upgradeLevels();
+    private void checkUserAndLevel(User user, String expectedId, Level expectedLevel) {
+        assertThat(user.getId(), is(expectedId));
+        assertThat(user.getLevel(), is(expectedLevel));
 
-        checkLevelUpgraded(users.get(0), false);
-        checkLevelUpgraded(users.get(1), true);
-        checkLevelUpgraded(users.get(2), false);
-        checkLevelUpgraded(users.get(3), true);
-        checkLevelUpgraded(users.get(4), false);
-
-        List<String> request = mailSender.getRequest();
-        assertThat(request.size(), is(2));
-        assertThat(request.get(0), is(users.get(1).getEmail()));
-        assertThat(request.get(1), is(users.get(3).getEmail()));
     }
 
     @Test
