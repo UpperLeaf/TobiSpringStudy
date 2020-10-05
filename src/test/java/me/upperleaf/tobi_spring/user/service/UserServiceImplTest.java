@@ -6,39 +6,37 @@ import me.upperleaf.tobi_spring.user.domain.Level;
 import me.upperleaf.tobi_spring.user.domain.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 import org.springframework.mail.MailSender;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.PlatformTransactionManager;
 
+import java.lang.reflect.Proxy;
 import java.util.Arrays;
 import java.util.List;
 
 import static me.upperleaf.tobi_spring.user.service.DefaultUserLevelUpgradePolicy.MIN_LOG_COUNT_FOR_SILVER;
 import static me.upperleaf.tobi_spring.user.service.DefaultUserLevelUpgradePolicy.MIN_RECOMMEND_FOR_GOLD;
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.fail;
-import static org.assertj.core.api.InstanceOfAssertFactories.atomicIntegerFieldUpdater;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.Mockito.*;
-
 
 @SpringBootTest
-@DirtiesContext
 @ContextConfiguration(locations = "/applicationContext.xml")
 class UserServiceImplTest {
+
+    @Autowired
+    ApplicationContext applicationContext;
 
     @Autowired
     PlatformTransactionManager transactionManager;
 
     @Autowired
-    UserServiceImpl userService;
+    UserService userService;
 
     @Autowired
     UserDao userDao;
@@ -64,8 +62,9 @@ class UserServiceImplTest {
         );
     }
 
+    @DirtiesContext
     @Test
-    public void upgradeAllOrNothing() {
+    public void upgradeAllOrNothing() throws Exception {
         UserServiceImpl userService = new UserServiceImpl();
 
         TestUserLevelUpgradePolicy testUserLevelUpgradePolicy = new TestUserLevelUpgradePolicy(users.get(3).getId(), userDao);
@@ -74,16 +73,18 @@ class UserServiceImplTest {
         userService.setUserLevelUpgradePolicy(testUserLevelUpgradePolicy);
         userService.setUserDao(userDao);
 
-        UserServiceTx userServiceTx = new UserServiceTx();
-        userServiceTx.setUserService(userService);
-        userServiceTx.setTransactionManager(transactionManager);
+        TxProxyFactoryBean txProxyFactoryBean = applicationContext.getBean("&userService", TxProxyFactoryBean.class);
+        txProxyFactoryBean.setTransactionManager(transactionManager);
+        txProxyFactoryBean.setTarget(userService);
+
+        UserService txUserService = (UserService)txProxyFactoryBean.getObject();
 
         userDao.deleteAll();
         users.forEach(userService::add);
         try {
-            userServiceTx.upgradeLevels();
+            txUserService.upgradeLevels();
             fail("TestUserServiceException Expected");
-        } catch (TestUserServiceException ex) {
+        } catch (TestUserServiceException ignored) {
 
         }
         checkLevelUpgraded(users.get(1), false);
@@ -111,14 +112,12 @@ class UserServiceImplTest {
         checkUserAndLevel(updated.get(0), "joytouch", Level.SILVER);
         checkUserAndLevel(updated.get(1), "madnite1", Level.GOLD);
 
-
     }
 
 
     private void checkUserAndLevel(User user, String expectedId, Level expectedLevel) {
         assertThat(user.getId(), is(expectedId));
         assertThat(user.getLevel(), is(expectedLevel));
-
     }
 
     @Test
@@ -137,7 +136,6 @@ class UserServiceImplTest {
 
         checkLevel(userWithLevelRead, userWithLevel.getLevel());
         checkLevel(userWithoutLevelRead, Level.BASIC);
-
     }
 
     private void checkLevel(User user, Level level) {

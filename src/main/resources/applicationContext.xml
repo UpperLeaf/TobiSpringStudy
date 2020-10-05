@@ -27,9 +27,11 @@
         <property name="mailSender" ref="mailSender"></property>
     </bean>
 
-    <bean id="userService" class="me.upperleaf.tobi_spring.user.service.UserServiceTx">
+    <bean id="userService" class="me.upperleaf.tobi_spring.user.service.TxProxyFactoryBean">
         <property name="transactionManager" ref="transactionManager"></property>
-        <property name="userService" ref="userServiceImpl"></property>
+        <property name="target" ref="userServiceImpl"></property>
+        <property name="serviceInterface" value="me.upperleaf.tobi_spring.user.service.UserService"></property>
+        <property name="pattern" value="upgradeLevels"></property>
      </bean>
 
     <bean id="userServiceImpl" class="me.upperleaf.tobi_spring.user.service.UserServiceImpl">

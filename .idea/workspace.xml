@@ -23,7 +23,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0554509-ffa8-4d3c-9217-8a8b36eb144b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/dao/MockUserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/service/TransactionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/service/TxProxyFactoryBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/user/ReflectionTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/user/message/FactoryBeanTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/user/message/Message.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/user/message/MessageFactoryBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/user/proxy/Hello.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/user/proxy/HelloTarget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/user/proxy/HelloUppercase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/user/proxy/ProxyTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/user/proxy/UppercaseHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/proxyfactory-bean-test.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -32,11 +43,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/service/TestUserLevelUpgradePolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/service/TestUserLevelUpgradePolicy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/service/UserServiceTx.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/service/UserServiceTx.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/dao/MockUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/upperleaf/tobi_spring/user/dao/MockUserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/user/service/UserServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/me/upperleaf/tobi_spring/user/service/UserServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,10 +100,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="spring-beans.schema" />
         <option value="Enum" />
         <option value="JUnit5 Test Class" />
         <option value="Interface" />
+        <option value="spring-beans.schema" />
         <option value="Class" />
       </list>
     </option>
@@ -151,9 +162,10 @@
       <command value="UserDaoTest" />
       <command value="JUnitTest" />
       <command value="UserServiceTest" />
+      <command value="UserServiceImplTest" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.UserServiceImplTest.mockUpgradeLevels">
+  <component name="RunManager" selected="Gradle.UserServiceImplTest">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -166,6 +178,63 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="FactoryBeanTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;me.upperleaf.tobi_spring.user.message.FactoryBeanTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="FactoryBeanTest.getMessageFromFactoryBean" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;me.upperleaf.tobi_spring.user.message.FactoryBeanTest.getMessageFromFactoryBean&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ProxyTest.dynamicProxyTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;me.upperleaf.tobi_spring.user.proxy.ProxyTest.dynamicProxyTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
     </configuration>
     <configuration name="UserServiceImplTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -186,12 +255,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="UserServiceImplTest.mockUpgradeLevels" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="UserServiceImplTest.add" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;me.upperleaf.tobi_spring.user.service.UserServiceImplTest.mockUpgradeLevels&quot;" />
+        <option name="scriptParameters" value="--tests &quot;me.upperleaf.tobi_spring.user.service.UserServiceImplTest.add&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -203,63 +272,6 @@
         <option name="vmOptions" />
       </ExternalSystemSettings>
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="UserServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;me.upperleaf.tobi_spring.user.service.UserServiceTest&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="UserServiceTest.upgradeLevels" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;me.upperleaf.tobi_spring.user.service.UserServiceTest.upgradeLevels&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="tobi_spring [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="dependencies" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
     <configuration name="TobiSpringApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -271,11 +283,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.UserServiceImplTest.mockUpgradeLevels" />
-        <item itemvalue="Gradle.tobi_spring [dependencies]" />
         <item itemvalue="Gradle.UserServiceImplTest" />
-        <item itemvalue="Gradle.UserServiceTest" />
-        <item itemvalue="Gradle.UserServiceTest.upgradeLevels" />
+        <item itemvalue="Gradle.UserServiceImplTest.add" />
+        <item itemvalue="Gradle.FactoryBeanTest.getMessageFromFactoryBean" />
+        <item itemvalue="Gradle.FactoryBeanTest" />
+        <item itemvalue="Gradle.ProxyTest.dynamicProxyTest" />
       </list>
     </recent_temporary>
   </component>
@@ -292,7 +304,7 @@
       <workItem from="1600998979479" duration="18451000" />
       <workItem from="1601096554820" duration="10774000" />
       <workItem from="1601109634861" duration="17900000" />
-      <workItem from="1601873304460" duration="11293000" />
+      <workItem from="1601873304460" duration="18243000" />
     </task>
     <servers />
   </component>
@@ -316,10 +328,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="662" y="361" key="#SQL_Dialects/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601178514577" />
-    <state x="1085" y="225" key="#com.intellij.ide.util.MemberChooser" timestamp="1601886062002">
+    <state x="1085" y="225" key="#com.intellij.ide.util.MemberChooser" timestamp="1601895951321">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1085" y="225" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601886062002" />
+    <state x="1085" y="225" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601895951321" />
     <state x="1034" y="387" width="492" height="273" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1601197296896">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
@@ -328,30 +340,30 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="709" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601882224475" />
-    <state x="1010" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1601003503025">
+    <state x="1010" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1601895998519">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1010" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601003503025" />
+    <state x="1010" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601895998519" />
     <state x="1275" y="410" key="FileChooserDialogImpl" timestamp="1601198175824">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1275" y="410" key="FileChooserDialogImpl/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601198175824" />
-    <state width="2517" height="282" key="GridCell.Tab.0.bottom" timestamp="1601886761040">
+    <state width="2517" height="282" key="GridCell.Tab.0.bottom" timestamp="1601896265045">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.bottom/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601886761040" />
-    <state width="2517" height="282" key="GridCell.Tab.0.center" timestamp="1601886761040">
+    <state width="2517" height="282" key="GridCell.Tab.0.bottom/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601896265045" />
+    <state width="2517" height="282" key="GridCell.Tab.0.center" timestamp="1601896265044">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.center/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601886761040" />
-    <state width="2517" height="282" key="GridCell.Tab.0.left" timestamp="1601886761040">
+    <state width="2517" height="282" key="GridCell.Tab.0.center/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601896265044" />
+    <state width="2517" height="282" key="GridCell.Tab.0.left" timestamp="1601896265044">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.left/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601886761040" />
-    <state width="2517" height="282" key="GridCell.Tab.0.right" timestamp="1601886761040">
+    <state width="2517" height="282" key="GridCell.Tab.0.left/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601896265044" />
+    <state width="2517" height="282" key="GridCell.Tab.0.right" timestamp="1601896265044">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state width="2517" height="282" key="GridCell.Tab.0.right/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601886761040" />
+    <state width="2517" height="282" key="GridCell.Tab.0.right/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601896265044" />
     <state width="2517" height="348" key="GridCell.Tab.1.bottom" timestamp="1601198176838">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
@@ -392,10 +404,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1086" y="315" key="new project wizard/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601094725315" />
-    <state x="936" y="240" width="672" height="677" key="run.anything.popup" timestamp="1601881966371">
+    <state x="936" y="240" width="672" height="677" key="run.anything.popup" timestamp="1601896264981">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="936" y="240" width="672" height="677" key="run.anything.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601881966371" />
+    <state x="936" y="240" width="672" height="677" key="run.anything.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1601896264981" />
     <state x="943" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601881959956">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>

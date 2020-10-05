@@ -42,3 +42,7 @@ me/upperleaf/tobi_spring/user/dao/UserDao.java
  me.upperleaf.tobi_spring.user.dao.UserDao
 me/upperleaf/tobi_spring/TobiSpringApplication.java
  me.upperleaf.tobi_spring.TobiSpringApplication
+me/upperleaf/tobi_spring/user/service/TransactionHandler.java
+ me.upperleaf.tobi_spring.user.service.TransactionHandler
+me/upperleaf/tobi_spring/user/service/TxProxyFactoryBean.java
+ me.upperleaf.tobi_spring.user.service.TxProxyFactoryBean

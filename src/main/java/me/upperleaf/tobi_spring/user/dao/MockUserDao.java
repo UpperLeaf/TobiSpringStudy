@@ -10,9 +10,7 @@ public class MockUserDao implements UserDao{
     private List<User> users;
     private List<User> updated = new ArrayList<>();
 
-    public MockUserDao(List<User> users){
-        this.users = users;
-    }
+    public MockUserDao(List<User> users){ this.users = users; }
 
     public List<User> getUpdated() {
         return updated;
