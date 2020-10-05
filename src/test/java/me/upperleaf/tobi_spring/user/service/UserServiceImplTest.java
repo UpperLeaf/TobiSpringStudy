@@ -6,6 +6,7 @@ import me.upperleaf.tobi_spring.user.domain.Level;
 import me.upperleaf.tobi_spring.user.domain.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.aop.framework.ProxyFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
@@ -73,8 +74,7 @@ class UserServiceImplTest {
         userService.setUserLevelUpgradePolicy(testUserLevelUpgradePolicy);
         userService.setUserDao(userDao);
 
-        TxProxyFactoryBean txProxyFactoryBean = applicationContext.getBean("&userService", TxProxyFactoryBean.class);
-        txProxyFactoryBean.setTransactionManager(transactionManager);
+        ProxyFactoryBean txProxyFactoryBean = applicationContext.getBean("&userService", ProxyFactoryBean.class);
         txProxyFactoryBean.setTarget(userService);
 
         UserService txUserService = (UserService)txProxyFactoryBean.getObject();

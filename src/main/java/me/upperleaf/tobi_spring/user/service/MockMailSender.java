@@ -9,11 +9,6 @@ import java.util.List;
 
 public class MockMailSender implements MailSender {
     private List<String> request = new ArrayList<>();
-    private String host;
-
-    public void setHost(String host) {
-        this.host = host;
-    }
 
     @Override
     public void send(SimpleMailMessage simpleMessage) throws MailException {

@@ -1,6 +1,13 @@
 package me.upperleaf.tobi_spring.user.proxy;
 
+import com.zaxxer.hikari.pool.ProxyFactory;
+import org.aopalliance.aop.Advice;
+import org.aopalliance.intercept.MethodInterceptor;
+import org.aopalliance.intercept.MethodInvocation;
 import org.junit.jupiter.api.Test;
+import org.springframework.aop.framework.ProxyFactoryBean;
+import org.springframework.aop.support.DefaultPointcutAdvisor;
+import org.springframework.aop.support.NameMatchMethodPointcut;
 
 import java.lang.reflect.Proxy;
 
@@ -32,4 +39,36 @@ public class ProxyTest {
         assertThat(dynamicProxyHello.sayThankYou("Tobi"), is("THANK YOU TOBI"));
     }
 
+    @Test
+    public void proxyFactoryBean() {
+        ProxyFactoryBean pfBean = new ProxyFactoryBean();
+        pfBean.setTarget(new HelloTarget());
+        pfBean.addAdvice((MethodInterceptor) invocation -> {
+            String ret = (String) invocation.proceed();
+            return ret.toUpperCase();
+        });
+
+        Hello proxiedHello = (Hello)pfBean.getObject();
+        assertThat(proxiedHello.sayHello("Tobi"), is ("HELLO TOBI"));
+        assertThat(proxiedHello.sayHi("Tobi"), is("HI TOBI"));
+        assertThat(proxiedHello.sayThankYou("Tobi"), is("THANK YOU TOBI"));
+    }
+
+    @Test
+    public void pointcutAdvisor() {
+        ProxyFactoryBean pfBean = new ProxyFactoryBean();
+        pfBean.setTarget(new HelloTarget());
+
+        NameMatchMethodPointcut pointcut = new NameMatchMethodPointcut();
+        pointcut.setMappedName("sayH*");
+        pfBean.addAdvisor(new DefaultPointcutAdvisor(pointcut, (MethodInterceptor) invocation ->  {
+            String ret = (String)invocation.proceed();
+            return ret.toUpperCase();
+        }));
+
+        Hello proxiedHello = (Hello)pfBean.getObject();
+        assertThat(proxiedHello.sayHello("Tobi"), is ("HELLO TOBI"));
+        assertThat(proxiedHello.sayHi("Tobi"), is("HI TOBI"));
+        assertThat(proxiedHello.sayThankYou("Tobi"), is("Thank you Tobi"));
+    }
 }

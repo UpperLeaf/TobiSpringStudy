@@ -20,9 +20,6 @@ public class TestUserLevelUpgradePolicy implements UserLevelUpgradePolicy{
         this.userDao = userDao;
     }
 
-    public void setUserDao(UserDao userDao) {
-        this.userDao = userDao;
-    }
     public void setMailSender(MailSender mailSender) {
         this.mailSender = mailSender;
     }

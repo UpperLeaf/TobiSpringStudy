@@ -19,7 +19,6 @@
     </bean>
 
     <bean id="mailSender" class="me.upperleaf.tobi_spring.user.service.DummyMailSender">
-        <property name="host" value="mail.server.com"></property>
     </bean>
 
     <bean id="userLevelUpgradePolicy" class="me.upperleaf.tobi_spring.user.service.DefaultUserLevelUpgradePolicy">
@@ -27,11 +26,13 @@
         <property name="mailSender" ref="mailSender"></property>
     </bean>
 
-    <bean id="userService" class="me.upperleaf.tobi_spring.user.service.TxProxyFactoryBean">
-        <property name="transactionManager" ref="transactionManager"></property>
+    <bean id="userService" class="org.springframework.aop.framework.ProxyFactoryBean">
         <property name="target" ref="userServiceImpl"></property>
-        <property name="serviceInterface" value="me.upperleaf.tobi_spring.user.service.UserService"></property>
-        <property name="pattern" value="upgradeLevels"></property>
+        <property name="interceptorNames">
+            <list>
+                <value>transactionAdvisor</value>
+            </list>
+        </property>
      </bean>
 
     <bean id="userServiceImpl" class="me.upperleaf.tobi_spring.user.service.UserServiceImpl">
@@ -41,5 +42,18 @@
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <bean id="transactionAdvice" class="me.upperleaf.tobi_spring.user.service.TransactionAdvice">
+        <property name="transactionManager" ref="transactionManager"></property>
+    </bean>
+
+    <bean id="transactionPointcut" class="org.springframework.aop.support.NameMatchMethodPointcut">
+        <property name="mappedName" value="upgrade*"></property>
+    </bean>
+
+    <bean id="transactionAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="advice" ref="transactionAdvice"></property>
+        <property name="pointcut" ref="transactionPointcut"></property>
     </bean>
 </beans>

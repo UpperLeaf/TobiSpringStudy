@@ -1,36 +1,30 @@
 package me.upperleaf.tobi_spring.user.service;
 
-import me.upperleaf.tobi_spring.user.domain.User;
+
+import org.aopalliance.intercept.MethodInterceptor;
+import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
-public class UserServiceTx implements UserService{
+public class TransactionAdvice implements MethodInterceptor {
+    PlatformTransactionManager transactionManager;
 
-    private UserService userService;
-    private PlatformTransactionManager transactionManager;
-
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
     public void setTransactionManager(PlatformTransactionManager transactionManager) {
         this.transactionManager = transactionManager;
     }
 
     @Override
-    public void upgradeLevels() {
+    public Object invoke(MethodInvocation invocation) throws Throwable {
         TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
-        try {
-            userService.upgradeLevels();
+
+        try{
+            Object ret = invocation.proceed();
             this.transactionManager.commit(status);
-        }catch (RuntimeException e) {
+            return ret;
+        }catch (RuntimeException e){
             this.transactionManager.rollback(status);
             throw e;
         }
-    }
-
-    @Override
-    public void add(User user) {
-        userService.add(user);
     }
 }
