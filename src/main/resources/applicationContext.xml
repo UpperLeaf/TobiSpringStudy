@@ -27,11 +27,15 @@
         <property name="mailSender" ref="mailSender"></property>
     </bean>
 
-    <bean id="userService" class="me.upperleaf.tobi_spring.user.service.UserService">
+    <bean id="userService" class="me.upperleaf.tobi_spring.user.service.UserServiceTx">
+        <property name="transactionManager" ref="transactionManager"></property>
+        <property name="userService" ref="userServiceImpl"></property>
+     </bean>
+
+    <bean id="userServiceImpl" class="me.upperleaf.tobi_spring.user.service.UserServiceImpl">
         <property name="userLevelUpgradePolicy" ref="userLevelUpgradePolicy"></property>
         <property name="userDao" ref="userDao"></property>
-        <property name="transactionManager" ref="transactionManager"></property>
-     </bean>
+    </bean>
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"></property>

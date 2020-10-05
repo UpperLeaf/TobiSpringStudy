@@ -1,3 +1,5 @@
+me/upperleaf/tobi_spring/user/service/UserServiceTx.java
+ me.upperleaf.tobi_spring.user.service.UserServiceTx
 me/upperleaf/tobi_spring/user/service/UserService.java
  me.upperleaf.tobi_spring.user.service.UserService
 me/upperleaf/tobi_spring/user/domain/User.java
@@ -7,6 +9,8 @@ me/upperleaf/tobi_spring/user/service/DefaultUserLevelUpgradePolicy.java
  me.upperleaf.tobi_spring.user.service.DefaultUserLevelUpgradePolicy$1
 me/upperleaf/tobi_spring/user/dao/UserDaoJdbc.java
  me.upperleaf.tobi_spring.user.dao.UserDaoJdbc
+me/upperleaf/tobi_spring/user/service/UserServiceImpl.java
+ me.upperleaf.tobi_spring.user.service.UserServiceImpl
 me/upperleaf/tobi_spring/user/dao/CountingConnectionMaker.java
  me.upperleaf.tobi_spring.user.dao.CountingConnectionMaker
 me/upperleaf/tobi_spring/user/service/TestUserServiceException.java

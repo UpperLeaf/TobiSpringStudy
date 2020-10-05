@@ -26,13 +26,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 @SpringBootTest
 @DirtiesContext
 @ContextConfiguration(locations = "/applicationContext.xml")
-class UserServiceTest {
+class UserServiceImplTest {
 
     @Autowired
     PlatformTransactionManager transactionManager;
 
     @Autowired
-    UserService userService;
+    UserServiceImpl userService;
 
     @Autowired
     UserDao userDao;
@@ -60,7 +60,7 @@ class UserServiceTest {
 
     @Test
     public void upgradeAllOrNothing() {
-        UserService userService = new UserService();
+        UserServiceImpl userService = new UserServiceImpl();
 
         TestUserLevelUpgradePolicy testUserLevelUpgradePolicy = new TestUserLevelUpgradePolicy(users.get(3).getId());
         testUserLevelUpgradePolicy.setUserDao(userDao);
@@ -68,12 +68,15 @@ class UserServiceTest {
 
         userService.setUserLevelUpgradePolicy(testUserLevelUpgradePolicy);
         userService.setUserDao(userDao);
-        userService.setTransactionManager(transactionManager);
+
+        UserServiceTx userServiceTx = new UserServiceTx();
+        userServiceTx.setUserService(userService);
+        userServiceTx.setTransactionManager(transactionManager);
 
         userDao.deleteAll();
         users.forEach(userService::add);
         try {
-            userService.upgradeLevels();
+            userServiceTx.upgradeLevels();
             fail("TestUserServiceException Expected");
         } catch (TestUserServiceException ex) {
 
@@ -83,24 +86,26 @@ class UserServiceTest {
 
     @Test
     public void upgradeLevels() {
-        UserService userService = new UserService();
+        UserServiceTx userServiceTx = new UserServiceTx();
+        userServiceTx.setTransactionManager(transactionManager);
+
+        UserServiceImpl userService = new UserServiceImpl();
 
         MockMailSender mailSender = new MockMailSender();
-
         DefaultUserLevelUpgradePolicy policy = new DefaultUserLevelUpgradePolicy();
         policy.setUserDao(userDao);
         policy.setMailSender(mailSender);
-
         userService.setUserLevelUpgradePolicy(policy);
         userService.setUserDao(userDao);
-        userService.setTransactionManager(transactionManager);
+
+        userServiceTx.setUserService(userService);
 
         userDao.deleteAll();
 
         users.forEach(user -> userDao.add(user));
 
 
-        userService.upgradeLevels();
+        userServiceTx.upgradeLevels();
 
         checkLevelUpgraded(users.get(0), false);
         checkLevelUpgraded(users.get(1), true);
