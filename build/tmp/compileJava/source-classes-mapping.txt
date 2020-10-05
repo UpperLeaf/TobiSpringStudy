@@ -19,6 +19,8 @@ me/upperleaf/tobi_spring/user/dao/NConnectionMaker.java
  me.upperleaf.tobi_spring.user.dao.NConnectionMaker
 me/upperleaf/tobi_spring/user/dao/ConnectionMaker.java
  me.upperleaf.tobi_spring.user.dao.ConnectionMaker
+me/upperleaf/tobi_spring/user/service/MockMailSender.java
+ me.upperleaf.tobi_spring.user.service.MockMailSender
 me/upperleaf/tobi_spring/user/dao/DaoFactory.java
  me.upperleaf.tobi_spring.user.dao.DaoFactory
 me/upperleaf/tobi_spring/user/service/UserLevelUpgradePolicy.java
@@ -28,6 +30,8 @@ me/upperleaf/tobi_spring/user/domain/Level.java
 me/upperleaf/tobi_spring/user/service/TestUserLevelUpgradePolicy.java
  me.upperleaf.tobi_spring.user.service.TestUserLevelUpgradePolicy
  me.upperleaf.tobi_spring.user.service.TestUserLevelUpgradePolicy$1
+me/upperleaf/tobi_spring/user/service/DummyMailSender.java
+ me.upperleaf.tobi_spring.user.service.DummyMailSender
 me/upperleaf/tobi_spring/user/dao/UserDao.java
  me.upperleaf.tobi_spring.user.dao.UserDao
 me/upperleaf/tobi_spring/TobiSpringApplication.java

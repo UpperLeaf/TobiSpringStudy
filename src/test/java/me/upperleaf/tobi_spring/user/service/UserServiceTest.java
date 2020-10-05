@@ -7,10 +7,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mail.MailSender;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import javax.sql.DataSource;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,6 +24,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 
 @SpringBootTest
+@DirtiesContext
 @ContextConfiguration(locations = "/applicationContext.xml")
 class UserServiceTest {
 
@@ -35,21 +37,24 @@ class UserServiceTest {
     @Autowired
     UserDao userDao;
 
+    @Autowired
+    MailSender mailSender;
+
     List<User> users;
 
     @Test
-    public void bean(){
+    public void bean() {
         assertThat(userService, is(notNullValue()));
     }
 
     @BeforeEach
     public void setUp() {
         users = Arrays.asList(
-                new User("bumjin", "박범진", "p1", Level.BASIC, MIN_LOG_COUNT_FOR_SILVER - 1, 0),
-                new User("joytouch", "강명성", "p2", Level.BASIC, MIN_LOG_COUNT_FOR_SILVER, 0),
-                new User("erwins", "신승한", "p3", Level.SILVER, 60, MIN_RECOMMEND_FOR_GOLD - 1),
-                new User("madnite1", "이상호", "p4", Level.SILVER, 60, MIN_RECOMMEND_FOR_GOLD),
-                new User("green", "오민규", "p5", Level.GOLD, 100, Integer.MAX_VALUE)
+                new User("bumjin", "박범진", "p1", "test1@email.com", Level.BASIC, MIN_LOG_COUNT_FOR_SILVER - 1, 0),
+                new User("joytouch", "강명성", "p2", "test2@email.com", Level.BASIC, MIN_LOG_COUNT_FOR_SILVER, 0),
+                new User("erwins", "신승한", "p3", "test3@email.com", Level.SILVER, 60, MIN_RECOMMEND_FOR_GOLD - 1),
+                new User("madnite1", "이상호", "p4", "test4@email.com", Level.SILVER, 60, MIN_RECOMMEND_FOR_GOLD),
+                new User("green", "오민규", "p5", "test5@email.com", Level.GOLD, 100, Integer.MAX_VALUE)
         );
     }
 
@@ -59,6 +64,7 @@ class UserServiceTest {
 
         TestUserLevelUpgradePolicy testUserLevelUpgradePolicy = new TestUserLevelUpgradePolicy(users.get(3).getId());
         testUserLevelUpgradePolicy.setUserDao(userDao);
+        testUserLevelUpgradePolicy.setMailSender(mailSender);
 
         userService.setUserLevelUpgradePolicy(testUserLevelUpgradePolicy);
         userService.setUserDao(userDao);
@@ -69,7 +75,7 @@ class UserServiceTest {
         try {
             userService.upgradeLevels();
             fail("TestUserServiceException Expected");
-        }catch (TestUserServiceException ex){
+        } catch (TestUserServiceException ex) {
 
         }
         checkLevelUpgraded(users.get(1), false);
@@ -77,9 +83,22 @@ class UserServiceTest {
 
     @Test
     public void upgradeLevels() {
+        UserService userService = new UserService();
+
+        MockMailSender mailSender = new MockMailSender();
+
+        DefaultUserLevelUpgradePolicy policy = new DefaultUserLevelUpgradePolicy();
+        policy.setUserDao(userDao);
+        policy.setMailSender(mailSender);
+
+        userService.setUserLevelUpgradePolicy(policy);
+        userService.setUserDao(userDao);
+        userService.setTransactionManager(transactionManager);
+
         userDao.deleteAll();
 
         users.forEach(user -> userDao.add(user));
+
 
         userService.upgradeLevels();
 
@@ -88,6 +107,11 @@ class UserServiceTest {
         checkLevelUpgraded(users.get(2), false);
         checkLevelUpgraded(users.get(3), true);
         checkLevelUpgraded(users.get(4), false);
+
+        List<String> request = mailSender.getRequest();
+        assertThat(request.size(), is(2));
+        assertThat(request.get(0), is(users.get(1).getEmail()));
+        assertThat(request.get(1), is(users.get(3).getEmail()));
     }
 
     @Test
@@ -116,10 +140,9 @@ class UserServiceTest {
     private void checkLevelUpgraded(User user, boolean upgraded) {
         User userUpdate = userDao.get(user.getId());
 
-        if(upgraded) {
+        if (upgraded) {
             assertThat(userUpdate.getLevel(), is(user.getLevel().nextLevel()));
-        }
-        else {
+        } else {
             assertThat(userUpdate.getLevel(), is(user.getLevel()));
         }
     }

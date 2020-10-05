@@ -7,7 +7,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
-import javax.sql.DataSource;
 import java.util.List;
 
 public class UserService {
@@ -22,6 +21,10 @@ public class UserService {
 
     public void setUserLevelUpgradePolicy(UserLevelUpgradePolicy userLevelUpgradePolicy) {
         this.userLevelUpgradePolicy = userLevelUpgradePolicy;
+    }
+
+    public UserLevelUpgradePolicy getUserLevelUpgradePolicy() {
+        return userLevelUpgradePolicy;
     }
 
     public void setUserDao(UserDao userDao){

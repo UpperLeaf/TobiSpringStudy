@@ -3,14 +3,16 @@ package me.upperleaf.tobi_spring.user.service;
 import me.upperleaf.tobi_spring.user.dao.UserDao;
 import me.upperleaf.tobi_spring.user.domain.Level;
 import me.upperleaf.tobi_spring.user.domain.User;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 
 public class TestUserLevelUpgradePolicy implements UserLevelUpgradePolicy{
 
     public static final int MIN_LOG_COUNT_FOR_SILVER = 50;
     public static final int MIN_RECOMMEND_FOR_GOLD = 30;
 
-    UserDao userDao;
-
+    private UserDao userDao;
+    private MailSender mailSender;
     private String id;
 
     TestUserLevelUpgradePolicy(String id){
@@ -19,6 +21,9 @@ public class TestUserLevelUpgradePolicy implements UserLevelUpgradePolicy{
 
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
+    }
+    public void setMailSender(MailSender mailSender) {
+        this.mailSender = mailSender;
     }
 
     @Override
@@ -38,5 +43,18 @@ public class TestUserLevelUpgradePolicy implements UserLevelUpgradePolicy{
             throw new TestUserServiceException();
         user.upgradeLevel();
         userDao.update(user);
+        sendUpgradeEmail(user);
+    }
+
+
+    private void sendUpgradeEmail(User user) {
+
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(user.getEmail());
+        mailMessage.setFrom("useradmin@ksug.org");
+        mailMessage.setSubject("Upgrade 안내");
+        mailMessage.setText("사용자님의 등급이 " + user.getLevel().name() + "로 업그레이드 되었습니다.");
+
+        mailSender.send(mailMessage);
     }
 }
