@@ -1,5 +1,9 @@
 package me.upperleaf.tobi_spring.user.domain;
 
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 public class User {
     String id;
     String name;
@@ -20,7 +24,6 @@ public class User {
         this.login = login;
         this.recommend = recommend;
     }
-
 
     public void upgradeLevel() {
         Level nextLevel = level.nextLevel();

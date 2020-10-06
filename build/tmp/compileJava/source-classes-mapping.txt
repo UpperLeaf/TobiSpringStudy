@@ -1,41 +1,47 @@
 me/upperleaf/tobi_spring/user/service/NameMatchClassMethodPointcut.java
  me.upperleaf.tobi_spring.user.service.NameMatchClassMethodPointcut
  me.upperleaf.tobi_spring.user.service.NameMatchClassMethodPointcut$SimpleClassFilter
-me/upperleaf/tobi_spring/user/service/UserService.java
- me.upperleaf.tobi_spring.user.service.UserService
 me/upperleaf/tobi_spring/user/domain/User.java
  me.upperleaf.tobi_spring.user.domain.User
-me/upperleaf/tobi_spring/user/service/TransactionHandler.java
- me.upperleaf.tobi_spring.user.service.TransactionHandler
-me/upperleaf/tobi_spring/user/dao/MockUserDao.java
- me.upperleaf.tobi_spring.user.dao.MockUserDao
 me/upperleaf/tobi_spring/user/service/DefaultUserLevelUpgradePolicy.java
  me.upperleaf.tobi_spring.user.service.DefaultUserLevelUpgradePolicy
  me.upperleaf.tobi_spring.user.service.DefaultUserLevelUpgradePolicy$1
-me/upperleaf/tobi_spring/user/dao/UserDaoJdbc.java
- me.upperleaf.tobi_spring.user.dao.UserDaoJdbc
+me/upperleaf/tobi_spring/user/service/SqlRetrievalFailureException.java
+ me.upperleaf.tobi_spring.user.service.SqlRetrievalFailureException
 me/upperleaf/tobi_spring/user/service/UserServiceImpl.java
  me.upperleaf.tobi_spring.user.service.UserServiceImpl
-me/upperleaf/tobi_spring/user/dao/CountingConnectionMaker.java
- me.upperleaf.tobi_spring.user.dao.CountingConnectionMaker
 me/upperleaf/tobi_spring/user/service/TestUserServiceException.java
  me.upperleaf.tobi_spring.user.service.TestUserServiceException
 me/upperleaf/tobi_spring/user/dao/DConnectionMaker.java
  me.upperleaf.tobi_spring.user.dao.DConnectionMaker
-me/upperleaf/tobi_spring/user/dao/DuplicateUserIdException.java
- me.upperleaf.tobi_spring.user.dao.DuplicateUserIdException
-me/upperleaf/tobi_spring/user/dao/NConnectionMaker.java
- me.upperleaf.tobi_spring.user.dao.NConnectionMaker
 me/upperleaf/tobi_spring/user/dao/ConnectionMaker.java
  me.upperleaf.tobi_spring.user.dao.ConnectionMaker
-me/upperleaf/tobi_spring/user/service/MockMailSender.java
- me.upperleaf.tobi_spring.user.service.MockMailSender
 me/upperleaf/tobi_spring/user/service/TransactionAdvice.java
  me.upperleaf.tobi_spring.user.service.TransactionAdvice
 me/upperleaf/tobi_spring/user/dao/DaoFactory.java
  me.upperleaf.tobi_spring.user.dao.DaoFactory
 me/upperleaf/tobi_spring/user/service/UserLevelUpgradePolicy.java
  me.upperleaf.tobi_spring.user.service.UserLevelUpgradePolicy
+me/upperleaf/tobi_spring/user/service/DummyMailSender.java
+ me.upperleaf.tobi_spring.user.service.DummyMailSender
+me/upperleaf/tobi_spring/user/service/UserService.java
+ me.upperleaf.tobi_spring.user.service.UserService
+me/upperleaf/tobi_spring/user/service/TransactionHandler.java
+ me.upperleaf.tobi_spring.user.service.TransactionHandler
+me/upperleaf/tobi_spring/user/dao/MockUserDao.java
+ me.upperleaf.tobi_spring.user.dao.MockUserDao
+me/upperleaf/tobi_spring/user/dao/UserDaoJdbc.java
+ me.upperleaf.tobi_spring.user.dao.UserDaoJdbc
+me/upperleaf/tobi_spring/user/dao/CountingConnectionMaker.java
+ me.upperleaf.tobi_spring.user.dao.CountingConnectionMaker
+me/upperleaf/tobi_spring/user/dao/DuplicateUserIdException.java
+ me.upperleaf.tobi_spring.user.dao.DuplicateUserIdException
+me/upperleaf/tobi_spring/user/dao/NConnectionMaker.java
+ me.upperleaf.tobi_spring.user.dao.NConnectionMaker
+me/upperleaf/tobi_spring/user/service/SimpleSqlService.java
+ me.upperleaf.tobi_spring.user.service.SimpleSqlService
+me/upperleaf/tobi_spring/user/service/MockMailSender.java
+ me.upperleaf.tobi_spring.user.service.MockMailSender
 me/upperleaf/tobi_spring/user/domain/Level.java
  me.upperleaf.tobi_spring.user.domain.Level
 me/upperleaf/tobi_spring/user/service/TestUserLevelUpgradePolicy.java
@@ -43,8 +49,8 @@ me/upperleaf/tobi_spring/user/service/TestUserLevelUpgradePolicy.java
  me.upperleaf.tobi_spring.user.service.TestUserLevelUpgradePolicy$1
 me/upperleaf/tobi_spring/user/service/TxProxyFactoryBean.java
  me.upperleaf.tobi_spring.user.service.TxProxyFactoryBean
-me/upperleaf/tobi_spring/user/service/DummyMailSender.java
- me.upperleaf.tobi_spring.user.service.DummyMailSender
+me/upperleaf/tobi_spring/user/service/SqlService.java
+ me.upperleaf.tobi_spring.user.service.SqlService
 me/upperleaf/tobi_spring/user/dao/UserDao.java
  me.upperleaf.tobi_spring.user.dao.UserDao
 me/upperleaf/tobi_spring/TobiSpringApplication.java
