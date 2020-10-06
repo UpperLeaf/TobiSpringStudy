@@ -6,24 +6,21 @@ import me.upperleaf.tobi_spring.user.domain.Level;
 import me.upperleaf.tobi_spring.user.domain.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.aop.framework.ProxyFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.mail.MailSender;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import java.lang.reflect.Proxy;
 import java.util.Arrays;
 import java.util.List;
 
 import static me.upperleaf.tobi_spring.user.service.DefaultUserLevelUpgradePolicy.MIN_LOG_COUNT_FOR_SILVER;
 import static me.upperleaf.tobi_spring.user.service.DefaultUserLevelUpgradePolicy.MIN_RECOMMEND_FOR_GOLD;
 import static org.assertj.core.api.Assertions.fail;
-import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @SpringBootTest
@@ -40,10 +37,16 @@ class UserServiceImplTest {
     UserService userService;
 
     @Autowired
+    UserService testUserService;
+
+    @Autowired
     UserDao userDao;
 
     @Autowired
     MailSender mailSender;
+
+    @Autowired
+    TestUserLevelUpgradePolicy policy;
 
     List<User> users;
 
@@ -63,26 +66,12 @@ class UserServiceImplTest {
         );
     }
 
-    @DirtiesContext
     @Test
-    public void upgradeAllOrNothing() throws Exception {
-        UserServiceImpl userService = new UserServiceImpl();
-
-        TestUserLevelUpgradePolicy testUserLevelUpgradePolicy = new TestUserLevelUpgradePolicy(users.get(3).getId(), userDao);
-        testUserLevelUpgradePolicy.setMailSender(mailSender);
-
-        userService.setUserLevelUpgradePolicy(testUserLevelUpgradePolicy);
-        userService.setUserDao(userDao);
-
-        ProxyFactoryBean txProxyFactoryBean = applicationContext.getBean("&userService", ProxyFactoryBean.class);
-        txProxyFactoryBean.setTarget(userService);
-
-        UserService txUserService = (UserService)txProxyFactoryBean.getObject();
-
+    public void upgradeAllOrNothing() {
         userDao.deleteAll();
         users.forEach(userService::add);
         try {
-            txUserService.upgradeLevels();
+            testUserService.upgradeLevels();
             fail("TestUserServiceException Expected");
         } catch (TestUserServiceException ignored) {
 
@@ -92,7 +81,7 @@ class UserServiceImplTest {
 
     @Test
     public void upgradeLevels() {
-        UserServiceImpl userService = new UserServiceImpl();
+        UserServiceImpl userServiceImpl = new UserServiceImpl();
 
         MockUserDao userDao = new MockUserDao(this.users);
 
@@ -102,10 +91,10 @@ class UserServiceImplTest {
         policy.setUserDao(userDao);
         policy.setMailSender(mailSender);
 
-        userService.setUserDao(userDao);
-        userService.setUserLevelUpgradePolicy(policy);
+        userServiceImpl.setUserDao(userDao);
+        userServiceImpl.setUserLevelUpgradePolicy(policy);
 
-        userService.upgradeLevels();
+        userServiceImpl.upgradeLevels();
 
         List<User> updated = userDao.getUpdated();
         assertThat(updated.size(), is(2));
